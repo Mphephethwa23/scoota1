@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Invite Friends & Earn 5%!</h1>
+  <p>Your referral link:</p>
+  <input type="text" value="https://your-username.github.io/scoota1?ref=USERNAME" id="refLink" readonly>
+  <button onclick="copyLink()">Copy Link</button>
+  
+  <script>
+    function copyLink() {
+      const link = document.getElementById("refLink");
+      link.select();
+      document.execCommand("copy");
+      alert("Copied to clipboard!");
+    }
+  </script>
+</body>
+</html>
