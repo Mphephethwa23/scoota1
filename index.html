@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scoota1 - Earn Daily</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 20px; }
+    button { background: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+    .timer { font-size: 24px; margin: 20px; }
+  </style>
+</head>
+<body>
+  <h1>🛴 Scoota1</h1>
+  <p>Press START to run scooters for 5 hours and earn!</p>
+  
+  <!-- SCOOTER TIMER -->
+  <button onclick="startTimer()">START SCOOTERS</button>
+  <div id="countdown" class="timer"></div>
+  
+  <!-- DEPOSIT INSTRUCTIONS -->
+  <h2>How to Deposit:</h2>
+  <p>Send USDT to: <b>YOUR_WALLET_ADDRESS</b></p>
+  <p>(Polygon/BEP20/TRC20)</p>
+  
+  <script>
+    function startTimer() {
+      // 5-hour countdown
+      const fiveHours = 5 * 60 * 60 * 1000;
+      const endTime = new Date().getTime() + fiveHours;
+      
+      const timer = setInterval(function() {
+        const now = new Date().getTime();
+        const timeLeft = endTime - now;
+        
+        // Calculate hours/minutes/seconds
+        const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+        const mins = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        
+        // Display timer
+        document.getElementById("countdown").innerHTML = 
+          `⏳ ${hours}h ${mins}m ${secs}s left`;
+        
+        // When timer ends
+        if (timeLeft < 0) {
+          clearInterval(timer);
+          document.getElementById("countdown").innerHTML = "✅ $2.50 Earned!";
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
